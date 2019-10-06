@@ -48,3 +48,8 @@ struct linie {
     public var farbe: UIColor
     public var staerke: CGFloat
 }
+
+struct punkt {
+    public var x: Double
+    public var y: Double
+}

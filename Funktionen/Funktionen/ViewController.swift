@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         canvas.backgroundColor = .white
         canvas.frame = view.frame
         koordinatensystem(canvas)
-        testfunktion()
+        testfunktion(canvas)
     }
 
     
