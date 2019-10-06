@@ -15,11 +15,6 @@ var anzahl_x: Int   = 0
 var anzahl_y: Int   = 0
 var einheit: Double = 50
 
-struct funktion {
-    var x: Double = 0
-    var z: Double = 0
-}
-
 func koordinatensystem(_ canvas: Canvas) {
     
     let bildschirm_breite = Double(canvas.bounds.width)
@@ -80,24 +75,21 @@ func umrechnung_einheiten_in_px(x: Double, y: Double) -> punkt{
     return punkt(x: new_x, y: new_y)
 }
 
-func testfunktion(_ canvas: Canvas) {
-    // Als 1. Test zeichnen wir den Funktionsgraphen von y = 0.5x - 2
-    var fx = funktion()
-    fx.x = 0.5
-    fx.z = -2
-    
-    // Berechnen des Anfangs- und des Endpunktes des Funktionsgraphen
-    let y_start: Double = Double(anzahl_x) * fx.x * -1 + fx.z
-    print("Errechnetes y_start ist \(y_start) bei x -\(anzahl_x) und z \(fx.z)");
-    let y_ende: Double  = Double(anzahl_x) * fx.x + fx.z
-    print("Errechnetes y_ende ist \(y_ende)");
-    let x_start: Double = Double(anzahl_x) * -1
-    let x_ende: Double  = Double(anzahl_x)
-    
-    let startpunkt = umrechnung_einheiten_in_px(x: x_start, y: y_start)
-    let endpunkt   = umrechnung_einheiten_in_px(x: x_ende, y: y_ende)
-    
-    let funktionsgraph = linie(x_start: startpunkt.x, y_start: startpunkt.y, x_ende: endpunkt.x, y_ende: endpunkt.y, farbe: .gray, staerke: 2)
-    
-    canvas.warenanlieferung(linie: funktionsgraph)
+func testfunktion(_ canvas: Canvas, funktionen: Array<funktion>) {
+    for fx in funktionen {
+        // Berechnen des Anfangs- und des Endpunktes des Funktionsgraphen
+        let y_start: Double = Double(anzahl_x) * fx.x * -1 + fx.z
+        print("Errechnetes y_start ist \(y_start) bei x -\(anzahl_x) und z \(fx.z)");
+        let y_ende: Double  = Double(anzahl_x) * fx.x + fx.z
+        print("Errechnetes y_ende ist \(y_ende)");
+        let x_start: Double = Double(anzahl_x) * -1
+        let x_ende: Double  = Double(anzahl_x)
+        
+        let startpunkt = umrechnung_einheiten_in_px(x: x_start, y: y_start)
+        let endpunkt   = umrechnung_einheiten_in_px(x: x_ende, y: y_ende)
+        
+        let funktionsgraph = linie(x_start: startpunkt.x, y_start: startpunkt.y, x_ende: endpunkt.x, y_ende: endpunkt.y, farbe: fx.farbe, staerke: 2)
+        
+        canvas.warenanlieferung(linie: funktionsgraph)
+    }
 }

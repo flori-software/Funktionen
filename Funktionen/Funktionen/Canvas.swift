@@ -53,3 +53,9 @@ struct punkt {
     public var x: Double
     public var y: Double
 }
+
+struct funktion {
+    var x: Double = 0
+    var z: Double = 0
+    var farbe: UIColor = .black
+}

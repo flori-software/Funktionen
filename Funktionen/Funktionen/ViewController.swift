@@ -20,7 +20,10 @@ class ViewController: UIViewController {
         canvas.backgroundColor = .white
         canvas.frame = view.frame
         koordinatensystem(canvas)
-        testfunktion(canvas)
+        let funktion1  = funktion(x: -1, z: 3, farbe: .green)
+        let funktion2  = funktion(x: 0.5, z: -2)
+        let funktionen = [funktion1, funktion2]
+        testfunktion(canvas, funktionen: funktionen)
     }
 
     
